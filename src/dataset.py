@@ -14,26 +14,26 @@ class BERTDataset:
     def __getitem__(self, item):
         review = str(self.review)
         review = " ".join(review.split())
-        
+
         inputs = self.tokenizer.encode_plus(
                 review,
                 None,
                 add_special_tokens=True,
                 max_length=self.max_len
         )
-        
+
         ids = inputs["input_id"]
         mask = inputs["attention_mask"]
         token_type_ids = input["token_type_ids"]
-        
+
         padding_length = self.max_len -len(ids)
         ids = ids + [0] * padding_length
         mask = mask + [0] * padding_length
         token_type_ids = token_type_ids + [0] * padding_length
 
         return {
-                'ids': torch .Tensor(ids, dtype=torch.long),
-                'mask': torch.Tensor(mask, dtype=torch.long),
-                'token_type_id': torch.Tensor(token_type_id, dypte=torch.long),
-                'target': torch.Tensor(self.target[item], dtype=torch.float)
+                'ids': torch.tensor(ids, dtype=torch.long),
+                'mask': torch.tensor(mask, dtype=torch.long),
+                'token_type_id': torch.tensor(token_type_id, dypte=torch.long),
+                'target': torch.tensor(self.target[item], dtype=torch.float)
         }
