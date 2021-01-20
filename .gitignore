@@ -1,1 +1,2 @@
-input/IMDB_Dataset.csv
+input/*
+*/__pycache__

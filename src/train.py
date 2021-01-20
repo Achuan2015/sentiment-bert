@@ -9,6 +9,7 @@ import numpy as np
 
 from model import BERTBaseUncased
 import engine
+import config
 
 def run():
     dfx = pd.read_csv(config.TRAINING_FILE).fillna("none")
