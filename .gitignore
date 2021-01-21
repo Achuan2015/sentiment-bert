@@ -1,3 +1,4 @@
 input/*
 model_file/*
 */__pycache__
+.DS_Store
